@@ -1,0 +1,19 @@
+.question {
+  background-color: #303030;
+  padding: 30px;
+
+  display: flex;
+
+  border-radius: 10px;
+}
+
+.question__main {
+  flex: 1;
+  margin-left: 30px;
+}
+
+.question__name {
+  font-size: 22px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
