@@ -9,11 +9,76 @@
 
 .question__main {
   flex: 1;
-  margin-left: 30px;
+  margin-left: 15px;
+  padding-left: 40px;
+  padding-right: 40px;
 }
 
 .question__name {
   font-size: 22px;
   margin-top: 20px;
   margin-bottom: 30px;
+}
+
+.playback-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid lightgreen;
+  background-color: transparent;
+  appearance: none;
+  outline: none;
+}
+
+.playback-btn.pause {
+  background-size: 60% auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url('../img//pause.svg');
+}
+.playback-btn.play {
+  background-size: 50% auto;
+  background-position: 61% 50%;
+  background-repeat: no-repeat;
+  background-image: url('../img//play.svg');
+}
+
+.controls {
+  margin-top: 20px;
+
+  display: flex;
+  position: relative;
+  align-items: center;
+}
+
+.timebar-time-info {
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  transform: translateY(calc(100% + 15px));
+  width: 100%;
+}
+
+.timebar-time-info div:last-child {
+  margin-left: auto;
+}
+
+.timebar.bar {
+  margin-left: 25px;
+  flex: 1;
+  position: relative;
+  height: 3px;
+  background-color: lightgreen;
+}
+
+.timebar-circle {
+  background-color: #737373;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 2px solid #444;
+  left: 0;
 }
