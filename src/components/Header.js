@@ -23,10 +23,11 @@ const Header = ({ score = 0, reset, active = 0 }) => {
       </div>
       <div className="menu">
         {types.map((type, index) => (
-          <div className={index == active ? 'item active' : 'item'}>
-            <a onClick={() => reset(index)} href={'#' + index}>
-              {type}
-            </a>
+          <div
+            onClick={() => reset(index)}
+            className={index === active ? 'item active' : 'item'}
+          >
+            <a href={'#' + index}>{type}</a>
           </div>
         ))}
       </div>

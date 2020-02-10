@@ -1,5 +1,5 @@
 import React from 'react'
-import '../assets/css/question.css'
+import '../assets/css/question.scss'
 import noimage from '../assets/img/noimage.jpg'
 
 function Question({ birdName, audio, hide, image }) {

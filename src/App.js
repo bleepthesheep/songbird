@@ -3,7 +3,7 @@ import Question from './components/Question'
 import Header from './components/Header'
 import Options from './components/Options'
 import Desc from './components/Desc'
-import './assets/css/main.css'
+import './assets/css/main.scss'
 
 import birdsData from './birds'
 
@@ -31,7 +31,7 @@ function App() {
     setType(newtype)
     setBird(Math.floor(Math.random() * 6))
     setHide(true)
-    setChosen(null)
+    // setChosen(null)
     setPoints(5)
 
     document
