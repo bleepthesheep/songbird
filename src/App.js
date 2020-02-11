@@ -14,12 +14,12 @@ function App() {
   const [chosen, setChosen] = useState(null)
   const [score, setScore] = useState(0)
   const [points, setPoints] = useState(5)
-
   const [end, setEnd] = useState(false)
 
   const checkId = id => {
     if (id === birdsData[type][bird].id) {
       if (type === 5) {
+        setScore(score + points)
         setEnd(true)
         return
       }
@@ -34,11 +34,19 @@ function App() {
     return false
   }
 
-  const reset = () => {
-    setScore(points + score)
+  const reset = (resetScore = false) => {
+    if (resetScore) {
+      setScore(0)
+      setType(0)
+      setHide(false)
+      setEnd(false)
+    } else {
+      setScore(points + score)
+      setType(type + 1)
+    }
 
     // reset state
-    setType(type + 1)
+    setChosen(null)
     setBird(Math.floor(Math.random() * 6))
     setHide(true)
     setPoints(5)
@@ -50,45 +58,51 @@ function App() {
   }
 
   // useEffect(() => console.log("Don't cheat!\n"), [])
-  // useEffect(() => console.log(birdsData[type][bird].name), [bird, type])
+  React.useEffect(() => console.log(birdsData[type][bird].name), [bird, type])
   // useEffect(() => console.log(points, score), [score, points])
 
   return (
     <div className="App">
-      {!end ? (
-        <div className="container">
-          <Header active={type} reset={reset} score={score} />
-          <Question
-            birdName={birdsData[type][bird].name}
-            audio={birdsData[type][bird].audio}
-            image={birdsData[type][bird].image}
-            hide={hide}
-          />
-          <div className="main-wrapper">
-            <Options
-              birds={birdsData[type]}
-              checkId={checkId}
-              won={!hide}
-              setChosen={setChosen}
+      <div className="container">
+        <Header active={type} reset={reset} score={score} />
+        {end ? (
+          <div className="container">
+            <div className="win">
+              <h1>Поздравляем!</h1>
+              <h2>
+                Вы прошли викторину и набрали {score} из 30 возможных баллов
+              </h2>
+              <div className="reset">
+                <button onClick={() => reset(true)}>Начать заново</button>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <>
+            <Question
+              birdName={birdsData[type][bird].name}
+              audio={birdsData[type][bird].audio}
+              image={birdsData[type][bird].image}
+              hide={hide}
             />
-            <Desc bird={chosen} />
-          </div>
+            <div className="main-wrapper">
+              <Options
+                birds={birdsData[type]}
+                checkId={checkId}
+                won={!hide}
+                setChosen={setChosen}
+              />
+              <Desc bird={chosen} />
+            </div>
 
-          <div className="reset">
-            <button disabled={hide} onClick={() => reset()}>
-              Next Round
-            </button>
-          </div>
-        </div>
-      ) : (
-        <div className="container">
-          <div className="win">
-            <h1>Congratulations!</h1>
-            <h2>Your score is {score} out of 30</h2>
-            {score === 30 && <h2>This is the maximum score!</h2>}
-          </div>
-        </div>
-      )}
+            <div className="reset full">
+              <button disabled={hide} onClick={() => reset()}>
+                Следующий уровень
+              </button>
+            </div>
+          </>
+        )}
+      </div>
     </div>
   )
 }
