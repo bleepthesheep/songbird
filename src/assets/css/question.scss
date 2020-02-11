@@ -5,6 +5,29 @@
   display: flex;
 
   border-radius: 10px;
+
+  @media only screen and (max-width: 570px) {
+    padding: 20px;
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+}
+
+.audio-container {
+  margin-top: 20px;
+}
+
+.question__image {
+  height: 130px;
+  width: 165px;
+  border-radius: 15px;
+  vertical-align: middle;
+  object-fit: cover;
+  flex-shrink: 0;
+  // line-height: 1;
+  // display: block;
+  border-style: none;
 }
 
 .question__main {
@@ -12,6 +35,12 @@
   margin-left: 15px;
   padding-left: 40px;
   padding-right: 40px;
+
+  @media only screen and (max-width: 570px) {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+  }
 }
 
 .question__name {

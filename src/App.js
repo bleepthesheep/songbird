@@ -63,7 +63,7 @@ function App() {
             image={birdsData[type][bird].image}
             hide={hide}
           />
-          <div className="flex">
+          <div className="main-wrapper">
             <Options
               birds={birdsData[type]}
               checkId={checkId}

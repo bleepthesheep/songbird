@@ -5,14 +5,16 @@ const Desc = ({ bird }) => {
   if (bird) {
     return (
       <div className="flex-1 desc">
-        <div className="flex">
-          <img
-            height="120"
-            src={bird.image}
-            alt={bird.name + ', ' + bird.species}
-          />
-
-          <div className="flex-1 ml-4">
+        <div className="desc__header">
+          <p>
+            <img
+              className="desc__image"
+              height="120"
+              src={bird.image}
+              alt={bird.name + ', ' + bird.species}
+            />
+          </p>
+          <div className="flex-1">
             {bird.name}
             <hr />
             {bird.species}

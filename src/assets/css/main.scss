@@ -14,7 +14,7 @@ body {
 .container {
   margin-left: auto;
   margin-right: auto;
-  width: 70%;
+  width: 90%;
   max-width: 1024px;
 }
 
@@ -54,8 +54,46 @@ audio {
   background-color: #303030;
   border-radius: 15px;
   border: 1px solid #737373;
+
+  &__image {
+    height: 130px;
+    width: 165px;
+    border-radius: 15px;
+    vertical-align: middle;
+    object-fit: cover;
+    flex-shrink: 0;
+    // line-height: 1;
+    // display: block;
+    border-style: none;
+  }
 }
 
 .mt-4 {
   margin-top: 20px;
+}
+
+.main-wrapper {
+  display: flex;
+  @media only screen and (max-width: 940px) {
+    flex-direction: column;
+  }
+}
+
+.desc__header {
+  // margin-top: 20px;
+  display: flex;
+  @media only screen and (max-width: 470px) {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.desc__image {
+  margin-right: 20px;
+  // display: inline;
+
+  @media only screen and (max-width: 470px) {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
 }

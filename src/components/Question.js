@@ -9,9 +9,9 @@ function Question({ birdName, audio, hide, image }) {
     <div className="question">
       <div className="question__image-wrapper">
         {hide ? (
-          <img height="150" src={noimage} alt="" className="question__image" />
+          <img src={noimage} alt="" className="question__image" />
         ) : (
-          <img height="150" src={image} alt="" className="question__image" />
+          <img src={image} alt="" className="question__image" />
         )}
       </div>
 

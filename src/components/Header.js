@@ -19,7 +19,7 @@ const Header = ({ score = 0, active = 0 }) => {
     <header className="header">
       <div className="top">
         <div className="logo-wrapper">
-          <img src={logo} height="60" className="logo" alt="logo" />
+          <img src={logo} className="logo" alt="logo" />
         </div>
         <div className="score">Score: {score}</div>
       </div>
