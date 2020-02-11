@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Question from './components/Question'
 import Header from './components/Header'
 import Options from './components/Options'
@@ -18,8 +18,6 @@ function App() {
   const [end, setEnd] = useState(false)
 
   const checkId = id => {
-    setScore(points + score)
-
     if (id === birdsData[type][bird].id) {
       if (type === 5) {
         setEnd(true)
@@ -37,6 +35,8 @@ function App() {
   }
 
   const reset = () => {
+    setScore(points + score)
+
     // reset state
     setType(type + 1)
     setBird(Math.floor(Math.random() * 6))
@@ -49,8 +49,9 @@ function App() {
       .forEach(el => el.classList.remove('right', 'wrong'))
   }
 
-  useEffect(() => console.log("Don't cheat!\n"), [])
-  useEffect(() => console.log(birdsData[type][bird].name), [bird, type])
+  // useEffect(() => console.log("Don't cheat!\n"), [])
+  // useEffect(() => console.log(birdsData[type][bird].name), [bird, type])
+  // useEffect(() => console.log(points, score), [score, points])
 
   return (
     <div className="App">
