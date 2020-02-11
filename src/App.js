@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Question from './components/Question'
 import Header from './components/Header'
 import Options from './components/Options'
@@ -15,10 +15,18 @@ function App() {
   const [score, setScore] = useState(0)
   const [points, setPoints] = useState(5)
 
+  const [end, setEnd] = useState(false)
+
   const checkId = id => {
+    setScore(points + score)
+    setHide(false)
+
     if (id === birdsData[type][bird].id) {
-      setScore(points + score)
-      setHide(false)
+      if (type === 5) {
+        setEnd(true)
+        return
+      }
+
       return true
     }
 
@@ -27,44 +35,57 @@ function App() {
     return false
   }
 
-  const reset = (newtype = 0) => {
-    setType(newtype)
+  const reset = () => {
+    // reset state
+    setType(type + 1)
     setBird(Math.floor(Math.random() * 6))
     setHide(true)
-    // setChosen(null)
     setPoints(5)
 
+    // reset classnames
     document
       .querySelectorAll('.option')
       .forEach(el => el.classList.remove('right', 'wrong'))
   }
 
+  useEffect(() => console.log(birdsData[type][bird].name), [bird, type])
+
   return (
     <div className="App">
-      <div className="container">
-        <Header active={type} reset={reset} score={score} />
-        <Question
-          birdName={birdsData[type][bird].name}
-          audio={birdsData[type][bird].audio}
-          image={birdsData[type][bird].image}
-          hide={hide}
-        />
-        <div className="flex">
-          <Options
-            birds={birdsData[type]}
-            checkId={checkId}
-            won={!hide}
-            setChosen={setChosen}
+      {!end ? (
+        <div className="container">
+          <Header active={type} reset={reset} score={score} />
+          <Question
+            birdName={birdsData[type][bird].name}
+            audio={birdsData[type][bird].audio}
+            image={birdsData[type][bird].image}
+            hide={hide}
           />
-          <Desc bird={chosen} />
-        </div>
+          <div className="flex">
+            <Options
+              birds={birdsData[type]}
+              checkId={checkId}
+              won={!hide}
+              setChosen={setChosen}
+            />
+            <Desc bird={chosen} />
+          </div>
 
-        <div className="reset">
-          <button disabled={hide} onClick={e => reset()}>
-            Next Round
-          </button>
+          <div className="reset">
+            <button disabled={hide} onClick={() => reset()}>
+              Next Round
+            </button>
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className="container">
+          <div className="win">
+            <h1>Congratulations!</h1>
+            <h2>Your score is {score} out of 30</h2>
+            {score === 30 && <h2>This is the maximum score!</h2>}
+          </div>
+        </div>
+      )}
     </div>
   )
 }

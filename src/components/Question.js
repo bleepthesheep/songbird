@@ -1,4 +1,6 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+
 import '../assets/css/question.scss'
 import noimage from '../assets/img/noimage.jpg'
 
@@ -24,6 +26,13 @@ function Question({ birdName, audio, hide, image }) {
       </div>
     </div>
   )
+}
+
+Question.propTypes = {
+  birdName: PropTypes.string,
+  audio: PropTypes.string,
+  hide: PropTypes.bool,
+  image: PropTypes.string,
 }
 
 export default Question

@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const Desc = ({ bird }) => {
   if (bird) {
@@ -34,6 +35,17 @@ const Desc = ({ bird }) => {
       </p>
     </div>
   )
+}
+
+Desc.propTypes = {
+  bird: PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+    species: PropTypes.string,
+    description: PropTypes.string,
+    image: PropTypes.string,
+    audio: PropTypes.string,
+  }),
 }
 
 export default Desc

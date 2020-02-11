@@ -1,9 +1,11 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+
 import logo from '../assets/img/logo.svg'
 
 import '../assets/css/header.scss'
 
-const Header = ({ score = 0, reset, active = 0 }) => {
+const Header = ({ score = 0, active = 0 }) => {
   let types = [
     'Разминка',
     'Воробьиные',
@@ -24,15 +26,21 @@ const Header = ({ score = 0, reset, active = 0 }) => {
       <div className="menu">
         {types.map((type, index) => (
           <div
-            onClick={() => reset(index)}
+            key={index}
+            // onClick={() => reset(index)}
             className={index === active ? 'item active' : 'item'}
           >
-            <a href={'#' + index}>{type}</a>
+            <span>{type}</span>
           </div>
         ))}
       </div>
     </header>
   )
+}
+
+Header.propTypes = {
+  score: PropTypes.number,
+  active: PropTypes.number,
 }
 
 export default Header
