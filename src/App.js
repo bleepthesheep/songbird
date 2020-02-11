@@ -48,6 +48,7 @@ function App() {
       .forEach(el => el.classList.remove('right', 'wrong'))
   }
 
+  useEffect(() => console.log("Don't cheat!\n"), [])
   useEffect(() => console.log(birdsData[type][bird].name), [bird, type])
 
   return (
