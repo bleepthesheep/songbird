@@ -19,13 +19,14 @@ function App() {
 
   const checkId = id => {
     setScore(points + score)
-    setHide(false)
 
     if (id === birdsData[type][bird].id) {
       if (type === 5) {
         setEnd(true)
         return
       }
+
+      setHide(false)
 
       return true
     }
